@@ -1,3 +1,5 @@
+# A module that creates and manages the bullets.
+
 import pygame
 from pygame.sprite import Sprite
 
