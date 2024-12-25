@@ -12,7 +12,7 @@ from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
-import sound_effects as se
+from sound_effects import SoundEffects
 
 
 class AlienInvasion:
@@ -33,6 +33,8 @@ class AlienInvasion:
         #   and create a scoreboard.
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
+
+        self.se = SoundEffects()
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -120,7 +122,7 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
-            se.laser_sound.play()
+            self.se.laser_sound.play()
 
     def _update_bullets(self):
         """Update position of bullets and get rid of old bullets."""
@@ -149,7 +151,7 @@ class AlienInvasion:
                 self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
             self.sb.check_high_score()
-            se.explosion_sound.play()
+            self.se.explosion_sound.play()
 
         if not self.aliens:
             # Destroy existing bullets and create new fleet.

@@ -2,7 +2,11 @@
 
 import pygame
 
-pygame.mixer.init()
 
-laser_sound = pygame.mixer.Sound("sounds/laser.wav")
-explosion_sound = pygame.mixer.Sound("sounds/explosion.wav")
+class SoundEffects:
+    """A class to manage the sound effects in the game."""
+
+    def __init__(self):
+        pygame.mixer.init()
+        self.laser_sound = pygame.mixer.Sound("sounds/laser.wav")
+        self.explosion_sound = pygame.mixer.Sound("sounds/explosion.wav")
